@@ -1,4 +1,4 @@
-package session_validation
+package authorizationserviceclient
 
 import (
 	"errors"

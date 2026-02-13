@@ -12,7 +12,7 @@ require (
 )
 
 require (
-	github.com/HomidWay/microservice-hw-proto v0.0.0-20260212125504-2ad208b85ec3 // indirect
+	github.com/HomidWay/microservice-hw-proto v0.0.0-20260213152947-de9d7cae756f // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect

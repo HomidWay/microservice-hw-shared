@@ -20,7 +20,7 @@ func (ri RequestInterceptor) Intercept(ctx context.Context, req interface{}, _ *
 
 	id := uuid.New()
 
-	ctx = context.WithValue(ctx, "x-request-id", id.String())
+	ctx = context.WithValue(ctx, "request_id", id.String())
 
 	if err := grpc.SetHeader(ctx, metadata.Pairs("x-request-id", id.String())); err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to set x-request-id: %v", err)

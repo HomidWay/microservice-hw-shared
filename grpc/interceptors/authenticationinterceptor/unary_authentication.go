@@ -4,22 +4,18 @@ import (
 	"context"
 	"errors"
 
-	sessionvalidation "github.com/HomidWay/microservice-hw-shared/session_validation"
+	"github.com/HomidWay/microservice-hw-shared/sessionvalidation"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
-type RequestInterceptor struct {
-	sessionManager sessionvalidation.SessionRepository
-}
+func (ai *AuthenticationInterceptor) unaryInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 
-func NewRequestInterceptor() *RequestInterceptor {
-	return &RequestInterceptor{}
-}
-
-func (ri RequestInterceptor) Intercept(ctx context.Context, req interface{}, _ *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+	if _, ok := publicMethods[info.FullMethod]; ok {
+		return handler(ctx, req)
+	}
 
 	sessionIDVal := ctx.Value("Authorization")
 	if sessionIDVal == nil {
@@ -31,7 +27,7 @@ func (ri RequestInterceptor) Intercept(ctx context.Context, req interface{}, _ *
 		return nil, status.Error(codes.Unauthenticated, "session is empty")
 	}
 
-	session, err := ri.sessionManager.ValidateSession(sessionID)
+	session, err := ai.sessionManager.ValidateSession(sessionID)
 	if err != nil {
 		if errors.Is(err, sessionvalidation.ErrSessionNotFound) {
 			return nil, status.Error(codes.Unauthenticated, "session is invalid")

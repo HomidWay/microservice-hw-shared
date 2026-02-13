@@ -2,6 +2,8 @@ github.com/HomidWay/microservice-hw-proto v0.0.0-20260212124150-c6028b643ba3 h1:
 github.com/HomidWay/microservice-hw-proto v0.0.0-20260212124150-c6028b643ba3/go.mod h1:9BYxt5E8yk753Ao2jv7APl3ulXpDRGnIOr+cRVHQPJc=
 github.com/HomidWay/microservice-hw-proto v0.0.0-20260212125504-2ad208b85ec3 h1:Q3QM4mg+v2qIfEQX5UM29/9rxbwoZWDkm9fLJHLLIWE=
 github.com/HomidWay/microservice-hw-proto v0.0.0-20260212125504-2ad208b85ec3/go.mod h1:eS4t8GPIVI1bCmcO3YcOo6S25q78uIuU2zk1K0NGfSo=
+github.com/HomidWay/microservice-hw-proto v0.0.0-20260213152947-de9d7cae756f h1:U8ysRxhHS3R6tvKdrXLPSZUZ+YZXvkUmnmMXlGhCuik=
+github.com/HomidWay/microservice-hw-proto v0.0.0-20260213152947-de9d7cae756f/go.mod h1:eS4t8GPIVI1bCmcO3YcOo6S25q78uIuU2zk1K0NGfSo=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=
 github.com/bsm/ginkgo/v2 v2.12.0/go.mod h1:SwYbGRRDovPVboqFv0tPTcG1sN61LM1Z4ARdbAV9g4c=
 github.com/bsm/gomega v1.27.10 h1:yeMWxP2pV2fG3FgAODIY8EiRE3dy0aeFYt4l7wh6yKA=

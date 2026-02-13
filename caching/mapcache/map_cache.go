@@ -1,4 +1,4 @@
-package inmemorycache
+package mapcache
 
 import (
 	"math/rand"

@@ -1,4 +1,4 @@
-package redisdb
+package rediscache
 
 import (
 	"context"

@@ -25,7 +25,7 @@ func NewCachingInterceptor(cache []caching.Cache[proto.Message], log logger.Logg
 	return CachingInterceprtor{cache: cache, log: log}
 }
 
-func (ci CachingInterceprtor) Intercept(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+func (ci CachingInterceprtor) UnaryInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 
 	if factory, ok := cachableRequests[info.FullMethod]; ok {
 		return ci.handleCaching(ctx, req, handler, factory)
