@@ -2,7 +2,7 @@ package cachinginterceptor
 
 import (
 	"github.com/HomidWay/microservice-hw-proto/pb/orderservice"
-	"github.com/HomidWay/microservice-hw-proto/pb/spotintrumentservice"
+	"github.com/HomidWay/microservice-hw-proto/pb/spotinstrumentservice"
 	"github.com/HomidWay/microservice-hw-proto/pb/userservice"
 	"google.golang.org/protobuf/proto"
 )
@@ -17,8 +17,8 @@ var cachableRequests = map[string]ResponseFactory{
 		return &orderservice.GetOrderStatusResponse{}
 	},
 
-	spotintrumentservice.SpotInstrumentService_ViewMarkets_FullMethodName: func() proto.Message {
-		return &spotintrumentservice.ViewMarketsResponse{}
+	spotinstrumentservice.SpotInstrumentService_ViewMarkets_FullMethodName: func() proto.Message {
+		return &spotinstrumentservice.ViewMarketsResponse{}
 	},
 
 	userservice.UserService_GetUserData_FullMethodName: func() proto.Message {
