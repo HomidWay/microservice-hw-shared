@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/HomidWay/micro-service-hw-shared/logger"
+	"github.com/HomidWay/microservice-hw-shared/logger"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

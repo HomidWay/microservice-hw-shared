@@ -7,8 +7,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/HomidWay/micro-service-hw-shared/caching"
-	"github.com/HomidWay/micro-service-hw-shared/logger"
+	"github.com/HomidWay/microservice-hw-shared/caching"
+	"github.com/HomidWay/microservice-hw-shared/logger"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"

@@ -1,9 +1,9 @@
 package cachinginterceptor
 
 import (
-	orderservice "github.com/HomidWay/micro-service-hw-shared/grpc/pb/order_service"
-	spotintrumentservice "github.com/HomidWay/micro-service-hw-shared/grpc/pb/spot_instrument_service"
-	userservice "github.com/HomidWay/micro-service-hw-shared/grpc/pb/user_service"
+	"github.com/HomidWay/microservice-hw-proto/pb/orderservice"
+	"github.com/HomidWay/microservice-hw-proto/pb/spotintrumentservice"
+	"github.com/HomidWay/microservice-hw-proto/pb/userservice"
 	"google.golang.org/protobuf/proto"
 )
 
