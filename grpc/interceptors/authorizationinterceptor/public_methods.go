@@ -1,4 +1,4 @@
-package requestinterceptor
+package authorizationinterceptor
 
 import (
 	"github.com/HomidWay/microservice-hw-proto/pb/authorizationservice"

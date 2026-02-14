@@ -1,4 +1,4 @@
-package requestinterceptor
+package authorizationinterceptor
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func (ai *AuthenticationInterceptor) unaryInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+func (ai *AuthorizationInterceptor) unaryInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 
 	if _, ok := publicMethods[info.FullMethod]; ok {
 		return handler(ctx, req)
