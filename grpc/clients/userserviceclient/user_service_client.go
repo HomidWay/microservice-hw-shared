@@ -49,7 +49,7 @@ func (c *UserServiceClient) RegisterNewUser(ctx context.Context, userName, passw
 
 func (c *UserServiceClient) GetUserData(ctx context.Context, userID string) (*User, error) {
 
-	identifier := &userservice.GetUserDataRequest_UserId{UserId: userID}
+	identifier := &userservice.GetUserDataRequest_Userid{Userid: userID}
 
 	request := &userservice.GetUserDataRequest{
 		Identification: identifier,
