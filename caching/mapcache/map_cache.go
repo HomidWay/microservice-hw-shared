@@ -90,6 +90,14 @@ func (c *WithTimeout[T]) Get(key string, out *T) error {
 }
 
 func (c *WithTimeout[T]) Set(key string, value T) error {
+
+	c.mu.RLock()
+	if _, ok := c.data[key]; ok {
+		c.mu.RUnlock()
+		return nil
+	}
+	c.mu.RUnlock()
+
 	c.mu.Lock()
 	defer c.mu.Unlock()
 

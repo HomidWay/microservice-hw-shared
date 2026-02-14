@@ -48,6 +48,15 @@ func (r *RedisDB) Set(key string, value proto.Message) error {
 		return fmt.Errorf("failed to marshal value: %w", err)
 	}
 
+	exists, err := r.rdb.Exists(r.ctx, key).Result()
+	if err != nil {
+		return fmt.Errorf("failed to check if key exists: %w", err)
+	}
+
+	if exists > 0 {
+		return nil
+	}
+
 	err = r.rdb.Set(r.ctx, key, data, r.ttl).Err()
 	if err != nil {
 		return fmt.Errorf("failed to store result: %w", err)

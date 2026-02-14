@@ -21,7 +21,7 @@ func NewRateLimitInterceptor(ctx context.Context, limitPerSecond, limitPerMinute
 }
 
 func (rl *RateLimitInterceptor) UnaryServerInterceptor() grpc.UnaryServerInterceptor {
-	return rl.unaryInterceprtor
+	return rl.unaryInterceptor
 }
 
 func (rl *RateLimitInterceptor) StreamServerInterceptor() grpc.StreamServerInterceptor {
