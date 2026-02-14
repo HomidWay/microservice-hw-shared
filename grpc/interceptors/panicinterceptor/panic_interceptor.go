@@ -2,28 +2,30 @@ package panicinterceptor
 
 import (
 	"context"
-	"log"
 	"runtime/debug"
 
+	"github.com/HomidWay/microservice-hw-shared/logger"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-type PanicInterceptor struct{}
-
-func NewPanicInterceptor() PanicInterceptor {
-	return PanicInterceptor{}
+type PanicInterceptor struct {
+	log logger.Logger
 }
 
-func (ri PanicInterceptor) Intercept(ctx context.Context, req interface{}, _ *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+func NewPanicInterceptor(log logger.Logger) PanicInterceptor {
+	return PanicInterceptor{log: log}
+}
+
+func (pi PanicInterceptor) Intercept(ctx context.Context, req interface{}, _ *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 	var resp interface{}
 	var err error
 
 	defer func() {
 		if r := recover(); r != nil {
-			log.Printf("Panic recovered: %v", r)
-			log.Printf("Stack trace: %s", debug.Stack())
+			pi.log.Error("Panic recovered: ", r)
+			pi.log.Error("Stack trace: ", debug.Stack())
 			err = status.Errorf(codes.Internal, "panic: %v", r)
 		}
 	}()
