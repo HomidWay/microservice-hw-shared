@@ -1,7 +1,6 @@
 package cachinginterceptor
 
 import (
-	"context"
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
@@ -23,13 +22,8 @@ func NewCachingInterceptor(cache caching.Cache[proto.Message], log logger.Logger
 	return CachingInterceprtor{cache: cache, log: log}
 }
 
-func (ci CachingInterceprtor) UnaryServerInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
-
-	if factory, ok := cachableRequests[info.FullMethod]; ok {
-		return ci.handleCaching(ctx, req, handler, factory)
-	}
-
-	return handler(ctx, req)
+func (ci CachingInterceprtor) UnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return ci.unaryInterceptor
 }
 
 func generateKey(data interface{}) (string, error) {
