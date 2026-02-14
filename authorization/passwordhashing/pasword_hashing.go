@@ -1,9 +1,14 @@
 package passwordhashing
 
 import (
+	"errors"
 	"fmt"
 
 	"golang.org/x/crypto/bcrypt"
+)
+
+var (
+	ErrPasswordDoesNotMatch = errors.New("password does not match")
 )
 
 func HashPassword(password string) (string, error) {
@@ -18,6 +23,9 @@ func HashPassword(password string) (string, error) {
 func ValidatePasswordHash(password, passwordHash string) error {
 	err := bcrypt.CompareHashAndPassword([]byte(passwordHash), []byte(password))
 	if err != nil {
+		if errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
+			return ErrPasswordDoesNotMatch
+		}
 		return err
 	}
 	return nil
