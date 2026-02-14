@@ -12,7 +12,7 @@ type AuthorizationInterceptor struct {
 	sessionManager sessionvalidation.SessionRepository
 }
 
-func NewAuthenticationInterceptor() *AuthorizationInterceptor {
+func NewAuthorizationInterceptor() *AuthorizationInterceptor {
 	return &AuthorizationInterceptor{}
 }
 
