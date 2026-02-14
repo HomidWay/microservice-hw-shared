@@ -18,11 +18,11 @@ func NewAuthorizationInterceptor(sessionValidator sessionvalidation.SessionRepos
 	}
 }
 
-func (ai *AuthorizationInterceptor) UnaryInterceptor() grpc.UnaryServerInterceptor {
+func (ai *AuthorizationInterceptor) UnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return ai.unaryInterceptor
 }
 
-func (ai *AuthorizationInterceptor) StreamInterceptor() grpc.StreamServerInterceptor {
+func (ai *AuthorizationInterceptor) StreamServerInterceptor() grpc.StreamServerInterceptor {
 	return ai.streamInterceptor
 }
 

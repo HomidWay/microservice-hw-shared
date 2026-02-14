@@ -13,10 +13,10 @@ func NewLoggerInterceptor(log logger.Logger) *LoggerInterceptor {
 	return &LoggerInterceptor{log: log}
 }
 
-func (li *LoggerInterceptor) UnaryInterceptor() grpc.UnaryServerInterceptor {
+func (li *LoggerInterceptor) UnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return li.unaryInterceptor
 }
 
-func (li *LoggerInterceptor) StreamInterceptor() grpc.StreamServerInterceptor {
+func (li *LoggerInterceptor) StreamServerInterceptor() grpc.StreamServerInterceptor {
 	return li.streamInterceptor
 }
