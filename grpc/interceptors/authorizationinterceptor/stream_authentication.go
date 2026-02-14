@@ -21,7 +21,7 @@ func (ai AuthorizationInterceptor) streamInterceptor(srv interface{}, ss grpc.Se
 		return status.Errorf(codes.Unauthenticated, "invalid session")
 	}
 
-	session, err := ai.sessionManager.ValidateSession(sessionID)
+	session, err := ai.sessionValidator.ValidateSession(sessionID)
 	if err != nil {
 		if errors.Is(err, sessionvalidation.ErrSessionNotFound) {
 			return status.Errorf(codes.Unauthenticated, "invalid session")
@@ -48,7 +48,7 @@ func (ai AuthorizationInterceptor) streamInterceptor(srv interface{}, ss grpc.Se
 
 	wrapped := &authenticatedStream{
 		ServerStream:   ss,
-		sessionManager: ai.sessionManager,
+		sessionManager: ai.sessionValidator,
 		sessionID:      sessionID,
 		userID:         session.UserID(),
 	}

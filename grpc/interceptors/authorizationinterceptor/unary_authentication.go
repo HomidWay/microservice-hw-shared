@@ -27,7 +27,7 @@ func (ai *AuthorizationInterceptor) unaryInterceptor(ctx context.Context, req in
 		return nil, status.Error(codes.Unauthenticated, "session is empty")
 	}
 
-	session, err := ai.sessionManager.ValidateSession(sessionID)
+	session, err := ai.sessionValidator.ValidateSession(sessionID)
 	if err != nil {
 		if errors.Is(err, sessionvalidation.ErrSessionNotFound) {
 			return nil, status.Error(codes.Unauthenticated, "session is invalid")

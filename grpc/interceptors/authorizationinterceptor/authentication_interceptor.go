@@ -9,11 +9,13 @@ import (
 )
 
 type AuthorizationInterceptor struct {
-	sessionManager sessionvalidation.SessionRepository
+	sessionValidator sessionvalidation.SessionRepository
 }
 
-func NewAuthorizationInterceptor() *AuthorizationInterceptor {
-	return &AuthorizationInterceptor{}
+func NewAuthorizationInterceptor(sessionValidator sessionvalidation.SessionRepository) *AuthorizationInterceptor {
+	return &AuthorizationInterceptor{
+		sessionValidator: sessionValidator,
+	}
 }
 
 func (ai *AuthorizationInterceptor) UnaryInterceptor() grpc.UnaryServerInterceptor {
